@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
     <AppContainer>
       <h1>Hacker News Most Read</h1>
+      <Outlet />
     </AppContainer>
   )
 }
