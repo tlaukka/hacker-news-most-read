@@ -3,17 +3,35 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ArticlePage from './ArticlePage'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import StoryPage from './StoryPage'
+import styled from '@emotion/styled'
+
+const Layout = styled.div`
+  max-width: 1024px;
+  margin: 0 auto;
+  background-color: #bababa;
+`
+
+function PageLayout () {
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  )
+}
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
+    element: <PageLayout />,
     children: [
       {
-        path: '/article/:storyId',
-        element: <ArticlePage />
+        path: '/',
+        element: <App />,
+      },
+      {
+        path: '/story/:storyId',
+        element: <StoryPage />
       }
     ]
   }
