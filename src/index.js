@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import StoryPage from './StoryPage'
-import PageLayout from './PageLayout'
+import StoryListing from './StoryListing'
 
 const router = createBrowserRouter([
   {
-    element: <PageLayout />,
+    element: <App />,
     children: [
       {
         path: '/',
-        element: <App />,
+        element: <StoryListing />,
       },
       {
         path: '/story/:storyId',

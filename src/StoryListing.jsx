@@ -10,7 +10,7 @@ function StoryListing () {
   return (
     <>
       <HeaderContainer>
-        <h1>{`[${topStoryIds.length}/500] Hacker News Top Stories`}</h1>
+        <h1>{`[${topStoryIds.length}/500] - Hacker News Top Stories`}</h1>
       </HeaderContainer>
       <StoryList>
         {topStoryIds.map((storyId, index) => (
