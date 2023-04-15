@@ -5,21 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import StoryPage from './StoryPage'
-import styled from '@emotion/styled'
-
-const Layout = styled.div`
-  max-width: 1024px;
-  margin: 0 auto;
-  background-color: #bababa;
-`
-
-function PageLayout () {
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  )
-}
+import PageLayout from './PageLayout'
 
 const router = createBrowserRouter([
   {
