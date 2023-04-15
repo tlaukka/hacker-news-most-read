@@ -10,6 +10,7 @@ function PageLayout () {
 }
 
 const Layout = styled.div`
+  position: relative;
   max-width: 1024px;
   margin: 0 auto;
   background-color: #bababa;

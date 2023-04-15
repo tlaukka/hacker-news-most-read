@@ -46,7 +46,7 @@ function Story ({ id, index }) {
 
 const StoryItem = styled.li`
   padding: 32px;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
 
   /* position: relative;
   left: ${({ opacity }) => (opacity === 1) ? '0px' : '64px'};
