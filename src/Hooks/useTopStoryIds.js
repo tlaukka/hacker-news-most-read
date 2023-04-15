@@ -22,6 +22,7 @@ function useTopStoryIds (pageSize = 20) {
   const topStoryIds = storyIds?.slice(0, end) ?? []
 
   return {
+    page,
     topStoryIds,
     getNextPage
   }

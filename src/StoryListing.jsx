@@ -3,9 +3,10 @@ import styled from '@emotion/styled'
 import Story from './Story'
 import PageLoader from './PageLoader'
 import useTopStoryIds from './Hooks/useTopStoryIds'
+import { PAGE_SIZE } from './constants'
 
 function StoryListing () {
-  const { topStoryIds, getNextPage } = useTopStoryIds()
+  const { topStoryIds, getNextPage } = useTopStoryIds(PAGE_SIZE)
 
   return (
     <>
@@ -14,7 +15,7 @@ function StoryListing () {
       </HeaderContainer>
       <StoryList>
         {topStoryIds.map((storyId, index) => (
-          <Story key={storyId} id={storyId} index={index % 20} />
+          <Story key={storyId} id={storyId} index={index} />
         ))}
       </StoryList>
       <PageLoader onLoad={getNextPage} />

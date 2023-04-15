@@ -3,10 +3,11 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import useDelay from './Hooks/useDelay'
 import useStory from './Hooks/useStory'
+import { PAGE_SIZE } from './constants'
 
 function Story ({ id, index }) {
   const story = useStory(id)
-  const ready = useDelay(index * 60)
+  const ready = useDelay((index % PAGE_SIZE) * 60)
 
   return (
     <StoryItem ready={ready}>
