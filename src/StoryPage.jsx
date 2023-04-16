@@ -1,32 +1,18 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styled from '@emotion/styled'
 import useStory from './Hooks/useStory'
-import { useQueries } from '@tanstack/react-query'
-import { fetchItem } from './queries'
-import { enter } from './animations'
+import useComments from './Hooks/useComments'
+import { enter, fadeIn } from './animations'
 import React from 'react'
 import useDelay from './Hooks/useDelay'
 
-function useComments ({ kids: ids = [] } = {}) {
-  const queries = ids.map((id) => {
-    return {
-      queryKey: ['item', id],
-      queryFn: () => fetchItem(id)
-    }
-  })
-
-  const results = useQueries({ queries })
-
-  return results
-}
-
 function StoryPage () {
   const { storyId } = useParams()
-  const navigate = useNavigate()
 
   const story = useStory(storyId)
+  const comments = useComments(story)
+
   const ready = useDelay(0)
-  // const comments = useComments(story)
 
   function getTimeString (time) {
     const options = {
@@ -38,21 +24,27 @@ function StoryPage () {
     return new Date(time * 1000).toLocaleString('en-UK', options)
   }
 
-  // function renderComments () {
-  //   return (
-  //     <ul>
-  //       {comments.map(({ data: comment }) => {
-  //         if (!comment) {
-  //           return null
-  //         }
+  function renderComments () {
+    return (
+      <>
+        <h2>{`Comments [${comments.length}]`}</h2>
+        <CommentList>
+          {comments.map(({ data: comment }) => {
+            if (!comment) {
+              return null
+            }
 
-  //         return (
-  //           <li key={comment.id} dangerouslySetInnerHTML={{ __html: comment.text }} />
-  //         )
-  //       })}
-  //     </ul>
-  //   )
-  // }
+            return (
+              <Comment key={comment.id}>
+                <h4>{`${comment.by} • ${getTimeString(comment.time)}`}</h4>
+                <CommentText dangerouslySetInnerHTML={{ __html: comment.text }} />
+              </Comment>
+            )
+          })}
+        </CommentList>
+      </>
+    )
+  }
 
   return (
     <StoryPageContainer ready={ready}>
@@ -66,8 +58,7 @@ function StoryPage () {
           <Header>{story.title}</Header>
           <By>{`By: ${story.by} • ${getTimeString(story.time)}`}</By>
           <Url href={story.url}>{`${story.url}`}</Url>
-          <GoBack onClick={() => navigate(-1)}>&lsaquo;{' Go back'}</GoBack>
-          {/* {renderComments()} */}
+          {renderComments()}
         </>
       )}
     </StoryPageContainer>
@@ -75,7 +66,7 @@ function StoryPage () {
 }
 
 const StoryPageContainer = styled.div`
-  padding: 2rem;
+  padding: 1rem;
 
   ${enter}
 `
@@ -90,7 +81,7 @@ const By = styled.h3`
   font-weight: 500;
   letter-spacing: 0.8px;
   margin: 0 0 2rem 0;
-  color: #c9cbd3;
+  color: #65737E;
 `
 
 const Url = styled.a`
@@ -99,7 +90,7 @@ const Url = styled.a`
   text-overflow: ellipsis;
   overflow: hidden;
   text-decoration: none;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   padding: 1rem;
   border-radius: 3px;
   color: #9DBE8C;
@@ -110,21 +101,35 @@ const Url = styled.a`
   }
 `
 
-const GoBack = styled.button`
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 500;
-  margin-top: 2rem;
+const CommentList = styled.ul`
+  list-style: none;
+  margin: 0;
   padding: 0;
-  border-radius: none;
-  border: none;
-  border-bottom: 2px solid #c9cbd3;
-  background: none;
-  color: #c9cbd3;
 
-  :hover {
-    color: #B9D1AD;
-    border-color: #B9D1AD;
+  ${fadeIn}
+`
+
+const Comment = styled.li`
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 3px;
+  background-color: #3b4150;
+
+  h4 {
+    margin: 0 0 1rem 0;
+    color: #65737E;
+  }
+`
+
+const CommentText = styled.p`
+  margin: 0;
+
+  a {
+    color: #9DBE8C;
+
+    :hover {
+      color: #B9D1AD;
+    }
   }
 `
 
