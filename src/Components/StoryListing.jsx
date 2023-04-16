@@ -2,8 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Story from './Story'
 import PageLoader from './PageLoader'
-import useTopStoryIds from './Hooks/useTopStoryIds'
-import { TOP_STORIES_PAGE_SIZE } from './constants'
+import useTopStoryIds from '../Hooks/useTopStoryIds'
+import { TOP_STORIES_PAGE_SIZE } from '../constants'
 
 function StoryListing () {
   const { topStoryIds, getNextPage } = useTopStoryIds(TOP_STORIES_PAGE_SIZE)

@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
 import styled from '@emotion/styled'
-import useStory from './Hooks/useStory'
-import useComments from './Hooks/useComments'
-import animations from './animations'
+import useStory from '../Hooks/useStory'
+import useComments from '../Hooks/useComments'
+import animations from '../animations'
 import React from 'react'
-import useDelay from './Hooks/useDelay'
-import { getTimeString } from './utils'
+import useDelay from '../Hooks/useDelay'
+import { getTimeString } from '../utils'
 
 function StoryPage () {
   const { storyId } = useParams()

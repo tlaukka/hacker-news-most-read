@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
-import useDelay from './Hooks/useDelay'
-import useStory from './Hooks/useStory'
-import { TOP_STORIES_PAGE_SIZE } from './constants'
-import animations from './animations'
+import useDelay from '../Hooks/useDelay'
+import useStory from '../Hooks/useStory'
+import { TOP_STORIES_PAGE_SIZE } from '../constants'
+import animations from '../animations'
 
 function Story ({ id, index }) {
   const story = useStory(id)
