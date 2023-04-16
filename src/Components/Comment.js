@@ -1,13 +1,20 @@
 import styled from '@emotion/styled'
 import { getTimeString } from '../utils'
+import useComment from '../Hooks/useComment'
 
-function Comment ({ comment }) {
+function Comment ({ id }) {
+  const comment = useComment(id)
+
   if (!comment) {
     return null
   }
 
+  if (comment.deleted) {
+    return null
+  }
+
   return (
-    <CommentContainer key={comment.id}>
+    <CommentContainer>
       <h4>{`${comment.by} • ${getTimeString(comment.time)}`}</h4>
       <CommentText dangerouslySetInnerHTML={{ __html: comment.text }} />
     </CommentContainer>

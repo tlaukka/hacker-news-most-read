@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import styled from '@emotion/styled'
 import useStory from '../Hooks/useStory'
-import useComments from '../Hooks/useComments'
 import animations from '../animations'
 import React from 'react'
 import useDelay from '../Hooks/useDelay'
@@ -12,8 +11,6 @@ function StoryPage () {
   const { storyId } = useParams()
 
   const story = useStory(storyId)
-  const comments = useComments(story)
-
   const ready = useDelay(0)
 
   return (
@@ -28,10 +25,10 @@ function StoryPage () {
           <Header>{story.title}</Header>
           <By>{`By: ${story.by} • ${getTimeString(story.time)}`}</By>
           <Url href={story.url}>{`${story.url}`}</Url>
-          <h2>{`Comments [${comments.length}]`}</h2>
+          <h2>{`Comments [${story.kids.length}]`}</h2>
           <CommentList>
-            {comments.map(({ data: comment }) => (
-              <Comment key={comment?.id} comment={comment} />
+            {story.kids.map((commentId) => (
+              <Comment key={commentId} id={commentId} />
             ))}
           </CommentList>
         </>
