@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import styled from '@emotion/styled'
 import useStory from './Hooks/useStory'
 import useComments from './Hooks/useComments'
-import { enter, fadeIn } from './animations'
+import animations from './animations'
 import React from 'react'
 import useDelay from './Hooks/useDelay'
 import { getTimeString } from './utils'
@@ -58,8 +58,7 @@ function StoryPage () {
 
 const StoryPageContainer = styled.div`
   padding: 1rem;
-
-  ${enter}
+  ${animations.enter}
 `
 
 const Header = styled.h1`
@@ -96,8 +95,7 @@ const CommentList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-
-  ${fadeIn}
+  ${animations.fadeIn}
 `
 
 const Comment = styled.li`

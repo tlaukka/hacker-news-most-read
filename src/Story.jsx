@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import useDelay from './Hooks/useDelay'
 import useStory from './Hooks/useStory'
 import { TOP_STORIES_PAGE_SIZE } from './constants'
-import { enter } from './animations'
+import animations from './animations'
 
 function Story ({ id, index }) {
   const story = useStory(id)
@@ -35,8 +35,7 @@ const StoryItem = styled.li`
   border-radius: 3px;
   background-color: #3b4150;
   box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2);
-
-  ${enter}
+  ${animations.enter}
 `
 
 const Title = styled(Link)`
