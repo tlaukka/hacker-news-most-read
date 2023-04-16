@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './Components/App'
 import reportWebVitals from './reportWebVitals'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import StoryPage from './Components/StoryPage'
 import StoryListing from './Components/StoryListing'
 import './index.css'
@@ -14,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <StoryListing />,
+      },
+      {
+        path: '/story',
+        element: <Navigate to={'/'} replace />,
       },
       {
         path: '/story/:storyId',
