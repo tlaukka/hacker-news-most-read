@@ -6,6 +6,7 @@ import animations from '../animations'
 import React from 'react'
 import useDelay from '../Hooks/useDelay'
 import { getTimeString } from '../utils'
+import Comment from './Comment'
 
 function StoryPage () {
   const { storyId } = useParams()
@@ -14,28 +15,6 @@ function StoryPage () {
   const comments = useComments(story)
 
   const ready = useDelay(0)
-
-  function renderComments () {
-    return (
-      <>
-        <h2>{`Comments [${comments.length}]`}</h2>
-        <CommentList>
-          {comments.map(({ data: comment }) => {
-            if (!comment) {
-              return null
-            }
-
-            return (
-              <Comment key={comment.id}>
-                <h4>{`${comment.by} • ${getTimeString(comment.time)}`}</h4>
-                <CommentText dangerouslySetInnerHTML={{ __html: comment.text }} />
-              </Comment>
-            )
-          })}
-        </CommentList>
-      </>
-    )
-  }
 
   return (
     <StoryPageContainer ready={ready}>
@@ -49,7 +28,12 @@ function StoryPage () {
           <Header>{story.title}</Header>
           <By>{`By: ${story.by} • ${getTimeString(story.time)}`}</By>
           <Url href={story.url}>{`${story.url}`}</Url>
-          {renderComments()}
+          <h2>{`Comments [${comments.length}]`}</h2>
+          <CommentList>
+            {comments.map(({ data: comment }) => (
+              <Comment key={comment?.id} comment={comment} />
+            ))}
+          </CommentList>
         </>
       )}
     </StoryPageContainer>
@@ -96,30 +80,6 @@ const CommentList = styled.ul`
   margin: 0;
   padding: 0;
   ${animations.fadeIn}
-`
-
-const Comment = styled.li`
-  margin: 1rem 0;
-  padding: 1rem;
-  border-radius: 3px;
-  background-color: #3b4150;
-
-  h4 {
-    margin: 0 0 1rem 0;
-    color: #65737E;
-  }
-`
-
-const CommentText = styled.p`
-  margin: 0;
-
-  a {
-    color: #9DBE8C;
-
-    :hover {
-      color: #B9D1AD;
-    }
-  }
 `
 
 export default StoryPage

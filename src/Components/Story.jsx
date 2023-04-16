@@ -34,7 +34,7 @@ const StoryItem = styled.li`
   padding: 2rem;
   border-radius: 3px;
   background-color: #3b4150;
-  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 12px 15px -10px rgba(0, 0, 0, 0.4);
   ${animations.enter}
 `
 
