@@ -1,5 +1,6 @@
 html {
   font-size: 16px;
+  color: #c9cbd3;
 }
 
 @media only screen and (max-width: 600px) {
@@ -15,4 +16,5 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2B303B;
 }

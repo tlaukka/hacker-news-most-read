@@ -33,7 +33,8 @@ const StoryItem = styled.li`
   margin: 1rem 0;
   padding: 2rem;
   border-radius: 3px;
-  border: 1px solid #d3d3d3;
+  background-color: #3b4150;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2);
 
   ${enter}
 `
@@ -43,20 +44,15 @@ const Title = styled(Link)`
   font-size: 1.4rem;
   font-weight: 500;
   text-decoration: none;
-  /* white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden; */
   margin: 0 0 0.4rem 0;
-  color: #000000;
-  /* transition: color 0.2s; */
+  color: #9DBE8C;
 
   :hover {
-    /* text-decoration: underline; */
-    color: #a0a0a0;
+    color: #B9D1AD;
   }
 
   span {
-    color: #6f6f6f;
+    color: #c9cbd3;
   }
 `
 
@@ -65,7 +61,6 @@ const By = styled.h3`
   font-weight: 500;
   letter-spacing: 0.8px;
   margin: 0;
-  color: #6f6f6f;
 `
 
 export default Story

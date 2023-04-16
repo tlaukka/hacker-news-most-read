@@ -83,14 +83,14 @@ const StoryPageContainer = styled.div`
 const Header = styled.h1`
   margin: 0 0 0.5rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #65737E;
 `
 
 const By = styled.h3`
   font-weight: 500;
   letter-spacing: 0.8px;
   margin: 0 0 2rem 0;
-  color: #6f6f6f;
+  color: #c9cbd3;
 `
 
 const Url = styled.a`
@@ -102,11 +102,11 @@ const Url = styled.a`
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 3px;
-  border: 1px solid #d3d3d3;
-  color: black;
+  color: #9DBE8C;
+  background-color: #3b4150;
 
   :hover {
-    color: #4a4a4a;
+    color: #B9D1AD;
   }
 `
 
@@ -118,11 +118,13 @@ const GoBack = styled.button`
   padding: 0;
   border-radius: none;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #c9cbd3;
   background: none;
+  color: #c9cbd3;
 
   :hover {
-    color: #4a4a4a;
+    color: #B9D1AD;
+    border-color: #B9D1AD;
   }
 `
 

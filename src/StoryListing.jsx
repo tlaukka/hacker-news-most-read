@@ -39,8 +39,8 @@ const Header = styled.div`
   right: 0;
   height: ${HEADER_HEIGHT};
   margin: 0;
-  border-bottom: 1px solid black;
-  background-color: white;
+  background-color: #21252B;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.6);
 
   h1 {
     max-width: calc(1024px - 2rem);
@@ -51,7 +51,7 @@ const Header = styled.div`
 
 const StoryList = styled.ul`
   margin: 0;
-  padding: ${HEADER_HEIGHT} 0 0 0;
+  padding: calc(${HEADER_HEIGHT} + 1rem) 0 0 0;
   list-style: none;
 `
 
