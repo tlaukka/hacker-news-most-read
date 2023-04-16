@@ -8,7 +8,6 @@ function PageLoader ({ onLoad }) {
   React.useEffect(
     () => {
       if (inView) {
-        console.log('---- load ------')
         onLoad()
       }
     },
@@ -22,7 +21,6 @@ function PageLoader ({ onLoad }) {
 
 const PageLoaderContainer = styled.div`
   height: 32px;
-  background-color: #faefaf;
 `
 
 export default PageLoader

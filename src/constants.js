@@ -1,1 +1,1 @@
-export const PAGE_SIZE = 20
+export const TOP_STORIES_PAGE_SIZE = 20

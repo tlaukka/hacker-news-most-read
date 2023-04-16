@@ -22,10 +22,9 @@ function App () {
 }
 
 const Layout = styled.div`
-  position: relative;
+  overflow: hidden;
   max-width: 1024px;
   margin: 0 auto;
-  background-color: #bababa;
 `
 
 export default App

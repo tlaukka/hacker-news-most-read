@@ -3,20 +3,26 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import useDelay from './Hooks/useDelay'
 import useStory from './Hooks/useStory'
-import { PAGE_SIZE } from './constants'
+import { TOP_STORIES_PAGE_SIZE } from './constants'
+import { enter } from './animations'
 
 function Story ({ id, index }) {
   const story = useStory(id)
-  const ready = useDelay((index % PAGE_SIZE) * 60)
+  const ready = useDelay((index % TOP_STORIES_PAGE_SIZE) * 60)
 
   return (
     <StoryItem ready={ready}>
       {!story ? (
-        'Loading...'
+        <>
+          <Title>{'Loading...'}</Title>
+          <By>{'-'}</By>
+        </>
       ) : (
         <>
-          <Title to={`story/${story.id}`}>{`${index + 1}. ${story.title}`}</Title>
-          <By>{`[${story.score}pt] - By: ${story.by}`}</By>
+          <Title to={`story/${story.id}`}>
+            <span>{`${index + 1}. `}</span>{`${story.title}`}
+          </Title>
+          <By>{`[${story.score}pt] • ${story.by}`}</By>
         </>
       )}
     </StoryItem>
@@ -24,30 +30,41 @@ function Story ({ id, index }) {
 }
 
 const StoryItem = styled.li`
-  padding: 2.6em 2em 2em 2em;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  border-bottom: 1px solid black;
-  margin-left: ${({ ready }) => ready ? '0px' : '64px'};
-  opacity: ${({ ready }) => ready ? 1 : 0};
-  transition: margin-left 1s, opacity 2s;
+  margin: 1rem 0;
+  padding: 2rem;
+  border-radius: 3px;
+  border: 1px solid #d3d3d3;
+
+  ${enter}
 `
 
 const Title = styled(Link)`
-  font-size: 1.4em;
+  display: block;
+  font-size: 1.4rem;
   font-weight: 500;
-  color: black;
+  text-decoration: none;
+  /* white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; */
+  margin: 0 0 0.4rem 0;
+  color: #000000;
+  /* transition: color 0.2s; */
 
   :hover {
-    color: #4a4a4a;
+    /* text-decoration: underline; */
+    color: #a0a0a0;
+  }
+
+  span {
+    color: #6f6f6f;
   }
 `
 
 const By = styled.h3`
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  margin: 0.4em 0 0 0;
+  letter-spacing: 0.8px;
+  margin: 0;
   color: #6f6f6f;
 `
 

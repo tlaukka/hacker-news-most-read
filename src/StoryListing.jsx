@@ -3,29 +3,33 @@ import styled from '@emotion/styled'
 import Story from './Story'
 import PageLoader from './PageLoader'
 import useTopStoryIds from './Hooks/useTopStoryIds'
-import { PAGE_SIZE } from './constants'
+import { TOP_STORIES_PAGE_SIZE } from './constants'
 
 function StoryListing () {
-  const { topStoryIds, getNextPage } = useTopStoryIds(PAGE_SIZE)
+  const { topStoryIds, getNextPage } = useTopStoryIds(TOP_STORIES_PAGE_SIZE)
 
   return (
-    <>
-      <HeaderContainer>
-        <h1>{`[${topStoryIds.length}/500] - Hacker News Top Stories`}</h1>
-      </HeaderContainer>
+    <StoryListingContainer>
+      <Header>
+        <h1>{`Hacker News Top Stories • [${topStoryIds.length}/500]`}</h1>
+      </Header>
       <StoryList>
         {topStoryIds.map((storyId, index) => (
           <Story key={storyId} id={storyId} index={index} />
         ))}
       </StoryList>
       <PageLoader onLoad={getNextPage} />
-    </>
+    </StoryListingContainer>
   )
 }
 
 const HEADER_HEIGHT = '100px'
 
-const HeaderContainer = styled.div`
+const StoryListingContainer = styled.div`
+  margin: 0 1rem 4rem 1rem;
+`
+
+const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,12 +39,13 @@ const HeaderContainer = styled.div`
   right: 0;
   height: ${HEADER_HEIGHT};
   margin: 0;
-  background-color: #faefaf;
+  border-bottom: 1px solid black;
+  background-color: white;
 
   h1 {
-    max-width: calc(1024px - 2em);
+    max-width: calc(1024px - 2rem);
     margin: 0;
-    padding: 0 1em;
+    padding: 0 1rem;
   }
 `
 
