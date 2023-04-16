@@ -5,6 +5,7 @@ import useComments from './Hooks/useComments'
 import { enter, fadeIn } from './animations'
 import React from 'react'
 import useDelay from './Hooks/useDelay'
+import { getTimeString } from './utils'
 
 function StoryPage () {
   const { storyId } = useParams()
@@ -13,16 +14,6 @@ function StoryPage () {
   const comments = useComments(story)
 
   const ready = useDelay(0)
-
-  function getTimeString (time) {
-    const options = {
-      timeZone: 'UTC',
-      dateStyle: 'long',
-      timeStyle: 'short'
-    }
-
-    return new Date(time * 1000).toLocaleString('en-UK', options)
-  }
 
   function renderComments () {
     return (
