@@ -1,6 +1,6 @@
 import React from 'react'
 
-function useDelay (delay) {
+function useDelay (delay = 0) {
   const [ready, setReady] = React.useState(false)
 
   React.useEffect(
