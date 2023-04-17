@@ -25,12 +25,14 @@ function StoryPage () {
           <Header>{story.title}</Header>
           <By>{`By: ${story.by} • ${getTimeString(story.time)}`}</By>
           <Url href={story.url}>{`${story.url}`}</Url>
-          <h2>{`Comments [${story.kids.length}]`}</h2>
-          <CommentList>
-            {story.kids.map((commentId) => (
-              <Comment key={commentId} id={commentId} />
-            ))}
-          </CommentList>
+          <h2>{`Comments [${story?.kids?.length ?? 0}]`}</h2>
+          {story.kids && (
+            <CommentList>
+              {story.kids.map((commentId) => (
+                <Comment key={commentId} id={commentId} />
+              ))}
+            </CommentList>
+          )}
         </>
       )}
     </StoryPageContainer>
