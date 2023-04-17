@@ -22,6 +22,7 @@ function Comment ({ id }) {
 }
 
 const CommentContainer = styled.li`
+  overflow: auto;
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 3px;
